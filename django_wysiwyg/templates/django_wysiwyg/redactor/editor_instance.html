@@ -2,6 +2,6 @@
     (function() {
         var config = {{ config|default:"null" }};
 
-        django_wysiwyg.enable('{{ editor_name }}', '{{ field_id }}', config);
+        django_wysiwyg.enable('{{ field_id }}', config);
     })();
 </script>

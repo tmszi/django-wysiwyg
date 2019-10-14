@@ -14,23 +14,23 @@
     {
         editors: {},
 
-        enable: function django_wysiwyg_enable(editor_name, field_id, config)
+        enable: function django_wysiwyg_enable(field_id, config)
         {
             if( !config ) {
                 config = django_wysiwyg_editor_configs[field_id] || django_wysiwyg_editor_config;
             }
 
-            if( !this.editors[editor_name] ) {
-                this.editors[editor_name] = CKEDITOR.replace(field_id, config);
+            if( !this.editors[field_id] ) {
+                this.editors[field_id] = CKEDITOR.replace(field_id, config);
             }
         },
 
-        disable: function django_wysiwyg_disable(editor_name)
+        disable: function django_wysiwyg_disable(field_id)
         {
-            var editor = this.editors[editor_name];
+            var editor = this.editors[field_id];
             if( editor ) {
                 editor.destroy(/*noUpdate=*/false);
-                this.editors[editor_name] = null;
+                this.editors[field_id] = null;
             }
         },
 

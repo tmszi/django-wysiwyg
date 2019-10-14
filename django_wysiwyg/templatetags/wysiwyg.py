@@ -43,7 +43,7 @@ def wysiwyg_setup(protocol="http", editor_override=None):
 
 
 @register.simple_tag
-def wysiwyg_editor(field_id, editor_name=None, config=None, editor_override=None):
+def wysiwyg_editor(field_id, config=None, editor_override=None):
     """
     Turn the textarea #field_id into a rich editor. If you do not specify the
     JavaScript name of the editor, it will be derived from the field_id.
@@ -53,12 +53,8 @@ def wysiwyg_editor(field_id, editor_name=None, config=None, editor_override=None
     this in case you have a complex JS ctxironment.
     """
 
-    if not editor_name:
-        editor_name = "%s_editor" % field_id
-
     ctx = {
         'field_id':     field_id,
-        'editor_name':  editor_name,
         'config': config
     }
     ctx.update(get_settings(editor_override=editor_override))
